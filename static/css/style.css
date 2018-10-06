@@ -49,6 +49,11 @@
     min-width: 500px;
 }
 
+.number-input {
+    max-width: 20%;
+}
+
+
 .pagestyle {
     background-color: white;
     color: #212529;

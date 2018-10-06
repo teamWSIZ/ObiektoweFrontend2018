@@ -32,12 +32,23 @@ angular.module('myApp.controllers').controller('masterCtrl',
             $scope.wyliczIloraz = function(xxx, yyy) {
                 $scope.iloraz = xxx / yyy;
             };
+            $scope.wyliczIloczyn = function(xxx, yyy) {
+                $scope.iloraz = xxx * yyy;
+            };
+
+            //// poniżej przykłady sortowania tablicy
 
             $scope.sortByNazwisko = function () {
                 $scope.M.results.sort(function (a, b) {
-                    let nameA = a.nazwisko.toUpperCase();
-                    let nameB = b.nazwisko.toUpperCase();
-                    if (nameA===nameB) return 0;
+                    const nameA = a.nazwisko.toUpperCase();
+                    const nameB = b.nazwisko.toUpperCase();
+                    if (nameA===nameB) {
+                        let imieA = a.imie.toUpperCase();
+                        let imieB = b.imie.toUpperCase();
+                        if (imieA==imieB) return 0;
+                        if (imieA<imieB) return -1;
+                        else return 1;
+                    }
                     if (nameA<nameB) return -1;
                     else return 1;
                 });
@@ -58,8 +69,10 @@ angular.module('myApp.controllers').controller('masterCtrl',
 
             $scope.M.results = [
                 {imie:'Rafael', nazwisko:'Nadal', score:8760},
-                {imie:'Roger', nazwisko:'Federer', score:6900},
+                {imie:'Roger', nazwisko:'Federer', score:6905},
                 {imie:'Novak', nazwisko:'Djokovic', score:6445},
+                {imie:'RogerZ', nazwisko:'Federer', score:6902},
+                {imie:'Novak', nazwisko:'Djokovic2', score:6445},
                 {imie:'Juan Martin', nazwisko:'del Potro', score:5980},
                 {imie:'Alexander', nazwisko:'Zverev', score:4890}
             ];

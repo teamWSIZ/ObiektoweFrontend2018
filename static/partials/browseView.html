@@ -24,12 +24,13 @@
             <th width="30%" ng-click="sortByNazwisko()" class="clickable"> Nazwisko</th>
             <th width="20%" ng-click="sortByScore()" class="clickable"> Score</th>
         </tr>
+
         </thead>
         <tbody>
         <tr ng-repeat="r in M.results">
             <td>{{r.imie}}</td>
             <td>{{r.nazwisko}}</td>
-            <td>{{r.score}}</td>
+            <td>{{r.score }}</td>
         </tr>
         </tbody>
     </table>
@@ -48,10 +49,14 @@
                             Wynik dodawania x i y = {{ x * y}}  <br>
                             W zmiennej AABB jest: {{ AABB + AABB}}
                         </p>
-                        <input type="text" ng-model="x" placeholder="zmienna x">
-                        <input type="text" ng-model="y" placeholder="zmienna y">
-                        <button class="btn btn-primary" ng-click="wyliczIloraz(x,y)">
-                            Wylicz iloraz</button>
+                        <input type="text" ng-model="x" placeholder="zmienna x" class="number-input">
+                        <input type="text" ng-model="y" placeholder="zmienna y" class="number-input">
+                        <button class="btn btn-info" ng-click="wyliczIloraz(x,y)">
+
+                            Iloraz</button>
+                        <button class="btn btn-info" ng-click="wyliczIloczyn(x,y)">
+                            <i class="fas fa-times"></i>
+                            Iloczyn</button>
                         <input type="text" ng-model="iloraz" readonly="true">
                     </div>
                 </div>
