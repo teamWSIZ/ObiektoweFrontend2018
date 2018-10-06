@@ -1,0 +1,7 @@
+http://es6katas.org/
+
+--> var; let, const
+--> creation, accessors, extends
+--> iterating thru arrays
+--> sorting
+--> filtering
