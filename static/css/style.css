@@ -83,18 +83,6 @@
     cursor: pointer;
 }
 
-
-.moveRight {
-    display: block;
-    margin-left: auto;
-    margin-right: 10px;
-}
-
-.moveCenter {
-    display: block;
-    margin: auto;
-}
-
 .text-larger {
     font-size: larger;
 }

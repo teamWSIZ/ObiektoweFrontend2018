@@ -1,13 +1,13 @@
 <div class="col-sm-12">
-    <h4 class="text-center" style="margin: 7px"> My first app </h4>
+    <h4 class="text-center" style="margin: 7px"> Single page app, view 1 </h4>
 
 
     <div class="row">
-        <div class="col-sm-5">
+        <div class="col-sm-5 boxed">
             <button class="btn btn-primary" ng-click="loadResults()">Reload {{x}}</button>
 
         </div>
-        <div class="col-sm-7 text-right">
+        <div class="col-sm-7 text-right boxed">
 
             <button class="btn btn-default text-danger"
                     ng-click="cleanupStorage()" title="Jakiś głębszy opis">Przycisk
@@ -41,12 +41,12 @@
                     {{nazwaArtykulu}} {{x}}
                 </div>
                 <div class="card-body">
-
+                    Abra kadabra
                     <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
+                        <h5 class="card-title">Tytuł karty</h5>
                         <p class="card-text">
-                            Wynik dodawania x i y = {{ x + y}}  <br>
-                            W zmiennej AABB jest: {{AABB + AABB}}
+                            Wynik dodawania x i y = {{ x * y}}  <br>
+                            W zmiennej AABB jest: {{ AABB + AABB}}
                         </p>
                         <input type="text" ng-model="x" placeholder="zmienna x">
                         <input type="text" ng-model="y" placeholder="zmienna y">
