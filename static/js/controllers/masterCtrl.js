@@ -8,8 +8,13 @@ angular.module('myApp.controllers').controller('masterCtrl',
             /////////////////////////////////////////////////////////////
             $scope.M = {};
             $scope.M.results = [];
+            $scope.M.selectedPlayer = {};   //to będzie jakiś obiekt, ważne, że tu mamy referencję (a nie kopię)
+
+
             $scope.search = {};
             $scope.iloraz = 0;
+
+
 
             $scope.AABB = 12; //to jest liczba
             $scope.nazwaArtykulu = 'BREAKING NEWS'; //to jest napis

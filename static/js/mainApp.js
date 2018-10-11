@@ -22,9 +22,24 @@ app.config(['$routeProvider', '$logProvider', function ($routeProvider, $logProv
     });
 }]);
 
+class LoggedUser {
+    constructor(album, wdauth) {
+        this.album = album;
+        this.wdauth = wdauth;
+    }
+
+    report() {
+        alert(this.album);
+    }
+
+}
+
 //// COMMON DEFINITIONS
 app.run(function ($rootScope, $window, $http, $location, $timeout, $interval) {
+
+
     $rootScope.R = {};
+    $rootScope.R.user = new LoggedUser('aaa11','');
 
     //Global properties
     console.log('Global run');
