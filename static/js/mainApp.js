@@ -22,6 +22,8 @@ app.config(['$routeProvider', '$logProvider', function ($routeProvider, $logProv
     });
 }]);
 
+///NASZE KLASY
+//
 class LoggedUser {
     constructor(album, wdauth) {
         this.album = album;
@@ -31,8 +33,33 @@ class LoggedUser {
     report() {
         alert(this.album);
     }
-
 }
+
+class LogonService {
+    //default values
+    constructor() {
+        this.cleanup();
+    }
+
+    login(album, pass) {
+        //call external service
+        console.log('logging in');
+        this.user = new LoggedUser(album, pass);
+        this.loggedIn = true;
+    }
+
+    logout() {
+        console.log('logging out');
+        this.cleanup();
+    }
+
+    cleanup() {
+        this.user = new LoggedUser("", "");
+        this.loggedIn = false;
+    }
+}
+
+
 
 //// COMMON DEFINITIONS
 app.run(function ($rootScope, $window, $http, $location, $timeout, $interval) {
@@ -40,9 +67,13 @@ app.run(function ($rootScope, $window, $http, $location, $timeout, $interval) {
 
     $rootScope.R = {};
     $rootScope.R.user = new LoggedUser('aaa11','');
+    $rootScope.R.logonService = new LogonService();
+
+    // $rootScope.R.logonService.login('asda','123');
+    // console.log($rootScope.R.logonService.loggedIn);
 
     //Global properties
-    console.log('Global run');
+    console.log('Global definitions loaded');
 
 
 });

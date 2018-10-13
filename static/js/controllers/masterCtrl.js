@@ -30,7 +30,6 @@ angular.module('myApp.controllers').controller('masterCtrl',
             };
 
             $scope.doit = function () {
-
                 alert('ok');
             };
 
@@ -50,7 +49,7 @@ angular.module('myApp.controllers').controller('masterCtrl',
                     if (nameA===nameB) {
                         let imieA = a.imie.toUpperCase();
                         let imieB = b.imie.toUpperCase();
-                        if (imieA==imieB) return 0;
+                        if (imieA===imieB) return 0;
                         if (imieA<imieB) return -1;
                         else return 1;
                     }
