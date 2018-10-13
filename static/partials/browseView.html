@@ -42,7 +42,7 @@
 
         </thead>
         <tbody>
-        <tr ng-repeat="r in M.results">
+        <tr ng-repeat="r in M.results" ng-click="M.selectedPlayer=r">
             <td>{{r.imie}}</td>
             <td>{{r.nazwisko}}</td>
             <td>{{r.score }}</td>
@@ -97,7 +97,7 @@
 
             <div class="card">
                 <div class="card-header">
-                    Panel edycji
+                    Edycja gracza
                 </div>
                 <div class="card-body">
 
@@ -106,11 +106,9 @@
                         <p class="card-text">
                             Tu edytujemy punkty
                         </p>
-                        <input type="text" ng-model="x">
-                        <input type="text" ng-model="y" ng-keydown="$even.keyCode===13 && doit()">
-                        <button class="btn btn-primary" ng-click="wyliczIloraz(x,y)">
-                            Wylicz iloraz</button>
-                        <input type="text" ng-model="iloraz" readonly="true">
+                        <input type="text" ng-model="M.selectedPlayer.imie" readonly="true">
+                        <input type="text" ng-model="M.selectedPlayer.nazwisko" readonly="true">
+                        <input type="text" ng-model="M.selectedPlayer.score">
                     </div>
                 </div>
             </div>

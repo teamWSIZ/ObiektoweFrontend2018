@@ -10,6 +10,8 @@ angular.module('myApp.controllers').controller('masterCtrl',
             $scope.M.results = [];
             $scope.search = {};
             $scope.iloraz = 0;
+            $scope.M.selectedPlayer = {};
+
 
             $scope.AABB = 12; //to jest liczba
             $scope.nazwaArtykulu = 'BREAKING NEWS'; //to jest napis
