@@ -46,7 +46,7 @@ class LogonService {
 
     login(album, pass) {
         //call external service
-        console.log('logging in');
+        console.log('logging in user:' + album);
         this.user = new LoggedUser(album, pass);
         this.loggedIn = true;
     }

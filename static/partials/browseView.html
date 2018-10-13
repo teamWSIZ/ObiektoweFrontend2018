@@ -9,9 +9,24 @@
         </div>
         <div class="col-sm-7 text-right boxed">
 
-            <button class="btn btn-default text-danger"
-                    ng-click="cleanupStorage()" title="Jakiś głębszy opis">Przycisk
+            <span ng-if="!R.logonService.loggedIn">
+                <input type="text" ng-model="username" placeholder="username" class="number-input">
+                <input type="password" ng-model="password" placeholder="password" class="number-input">
+
+            </span>
+
+            <button class="btn btn-success logonbutton"
+                    ng-click="R.logonService.login(username,password)"
+                    ng-if="!R.logonService.loggedIn"
+                    title="Zaloguj do systemu">Zaloguj
             </button>
+
+            <button class="btn btn-default logonbutton"
+                    ng-click="R.logonService.logout()"
+                    ng-if="R.logonService.loggedIn"
+                    title="Zaloguj do systemu">Wyloguj
+            </button>
+
 
         </div>
     </div>
@@ -37,15 +52,17 @@
 
     <div class="row">
         <div class="col-sm-6">
-            <div class="card">
-                <div class="card-header">
+            <div class="card" style="margin-bottom: 15px">
+                <div class="card-header  bg-info text-white">
                     Zalogowany użytkownik
                 </div>
                 <div class="card-body">
-                    Użytkownik: {{R.user.album}}, token: {{R.user.wdauth}}
+                    Użytkownik:
+                    <input type="text" ng-model="R.user.album" class="number-input">,
+                    token: {{R.user.wdauth}}
                 </div>
                 <div class="card-footer">
-
+                    (footer)
                 </div>
             </div>
 
