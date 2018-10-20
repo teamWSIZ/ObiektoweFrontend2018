@@ -23,46 +23,6 @@ app.config(['$routeProvider', '$logProvider', function ($routeProvider, $logProv
 }]);
 
 
-/////////////////////////////////////////////
-
-class LoggedUser {
-    constructor(album, wdauth) {
-        this.album = album;
-        this.wdauth = wdauth;
-    }
-
-    report() {
-        alert(this.album);
-    }
-}
-
-
-//nasza klasa
-class LogonService {
-    //default values
-    constructor() {
-        this.cleanup();
-    }
-
-    login(album, pass) {
-        //call external service
-        console.log('logging in user:' + album);
-        this.user = new LoggedUser(album, pass);
-        this.loggedIn = true;
-    }
-
-    logout() {
-        console.log('logging out');
-        this.cleanup();
-    }
-
-    cleanup() {
-        this.user = new LoggedUser("", "");
-        this.loggedIn = false;
-    }
-}
-
-
 
 
 
@@ -71,9 +31,9 @@ class LogonService {
 app.run(function ($rootScope, $window, $http, $location, $timeout, $interval) {
     $rootScope.R = {};
 
-
     $rootScope.R.logonService = new LogonService();
     $rootScope.R.user = new LoggedUser("Z1234", "1111");
+    $rootScope.R.chatService = new ChatService();
 
 
     //Global properties
