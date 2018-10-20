@@ -12,6 +12,10 @@ angular.module('myApp.controllers').controller('masterCtrl',
             $scope.iloraz = 0;
             $scope.M.selectedPlayer = {};
             $scope.M.posts = [];
+            $scope.M.password = '';
+            $scope.M.user = '';
+            $scope.M.wdauth = '';
+
 
 
             $scope.AABB = 12; //to jest liczba
@@ -27,10 +31,32 @@ angular.module('myApp.controllers').controller('masterCtrl',
                 });
             };
 
-            $scope.doit = function () {
-
-                alert('ok');
+            $scope.computeMd5 = function (pass) {
+                let pass_text = pass;
+                let pass_md5 = md5(pass_text);
+                alert('plain=' + pass + ' md5=' + pass_md5);
             };
+
+
+            // https://denver.wsi.edu.pl:8443/wd-auth/auth?album=album&pass=md5
+
+            $scope.logInWd = function (album, pass) {
+                let pass_md5 = md5(pass);
+                let url = 'https://denver.wsi.edu.pl:8443/wd-auth/auth?album=' + album + '&pass=' + pass_md5;
+
+                return $http({
+                    url: url,
+                    method: 'GET',
+                    headers: {'Content-Type': 'application/json'}
+                }).success(function (data) {
+                    $scope.M.wdauth = data;
+                    alert('Zalogowano, token=' + data);
+                });
+            };
+
+
+
+
 
             $scope.wyliczIloraz = function(xxx, yyy) {
                 $scope.iloraz = xxx / yyy;

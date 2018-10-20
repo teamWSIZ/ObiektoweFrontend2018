@@ -11,12 +11,12 @@
         <div class="col-sm-7 text-right boxed">
 
             <span ng-if="!R.logonService.loggedIn">
-                <input type="text" ng-model="username" placeholder="username" class="number-input">
-                <input type="password" ng-model="password" placeholder="password" class="number-input">
+                <input type="text" ng-model="M.user" placeholder="username" class="number-input">
+                <input type="password" ng-model="M.password" placeholder="password" class="number-input">
             </span>
 
             <button class="btn btn-success logonbutton"
-                    ng-click="R.logonService.login(username,password)"
+                    ng-click="logInWd(M.user, M.password); R.logonService.login(M.user,M.password)"
                     ng-if="!R.logonService.loggedIn"
                     title="Zaloguj do systemu">Zaloguj
             </button>
