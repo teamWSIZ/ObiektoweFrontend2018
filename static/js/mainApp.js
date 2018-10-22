@@ -27,17 +27,16 @@ app.config(['$routeProvider', '$logProvider', function ($routeProvider, $logProv
 
 
 
-//// COMMON DEFINITIONS
+/**
+ * Ta funkcja jest wykonywana tylko raz dla całej aplikacji; obiekty zdefiniowane na $rootScope
+ * można używać we wszystkich widokach.
+ */
 app.run(function ($rootScope, $window, $http, $location, $timeout, $interval) {
     $rootScope.R = {};
 
-    $rootScope.R.logonService = new LogonService();
-    $rootScope.R.user = new LoggedUser("Z1234", "1111");
-    $rootScope.R.chatService = new ChatService();
+    $rootScope.R.logonService = new LogonService($http, 'https://denver.wsi.edu.pl:8443/wd-auth');
+    $rootScope.R.chatService = new ChatService($http, $rootScope.$apply);
 
-
-    //Global properties
-    console.log('Global run');
 
 
 });

@@ -16,45 +16,8 @@ angular.module('myApp.controllers').controller('masterCtrl',
             $scope.M.user = '';
             $scope.M.wdauth = '';
 
-
-
             $scope.AABB = 12; //to jest liczba
             $scope.nazwaArtykulu = 'BREAKING NEWS'; //to jest napis
-
-            $scope.callSomeHttp = function(){
-                return $http({
-                    url: 'http://google.com/cleanup',
-                    method: 'GET',
-                    headers: {'Content-Type': 'application/json'}
-                }).success(function(data){
-                    $log.info('Google DB deleted');
-                });
-            };
-
-            $scope.computeMd5 = function (pass) {
-                let pass_text = pass;
-                let pass_md5 = md5(pass_text);
-                alert('plain=' + pass + ' md5=' + pass_md5);
-            };
-
-
-            // https://denver.wsi.edu.pl:8443/wd-auth/auth?album=album&pass=md5
-
-            $scope.logInWd = function (album, pass) {
-                let pass_md5 = md5(pass);
-                let url = 'https://denver.wsi.edu.pl:8443/wd-auth/auth?album=' + album + '&pass=' + pass_md5;
-
-                return $http({
-                    url: url,
-                    method: 'GET',
-                    headers: {'Content-Type': 'application/json'}
-                }).success(function (data) {
-                    $scope.M.wdauth = data;
-                    alert('Zalogowano, token=' + data);
-                });
-            };
-
-
 
 
 
@@ -103,8 +66,31 @@ angular.module('myApp.controllers').controller('masterCtrl',
                     $scope.M.posts = data.splice(
                         pageNumber * pageSize, pageSize);
                 });
-
             };
+
+            $scope.getFromService = function (pageNumber, pageSize) {
+                //wołanie serwisów http przy pomocy metody fetch (javascript/ecmascript)
+                fetch('https://jsonplaceholder.typicode.com/posts')
+                    .then(response => response.json())
+                    .then(json => {
+                        console.log('before:' + JSON.stringify($scope.M.posts));
+                        console.log('got: ' + json.length);
+                        $scope.M.posts = json;
+                        console.log('after:' + JSON.stringify($scope.M.posts));
+                        $scope.$apply();  //to trzeba zrobić wewnątrz 'fetch'; inaczej angular nie odświeży widoku
+                    });
+
+                //wykorzystanie serwisu $http (angularjs)
+                // return $http({
+                //     url: 'https://jsonplaceholder.typicode.com/posts',
+                //     method: 'GET',
+                //     headers: {'Content-Type': 'application/json'}
+                // }).success(function(json){
+                //     console.log('got: ' + json);
+                //     $scope.M.posts = json;
+                // });
+            };
+
 
 
             ////// INIT STATE
@@ -119,7 +105,7 @@ angular.module('myApp.controllers').controller('masterCtrl',
                 {imie:'Alexander', nazwisko:'Zverev', score:4890}
             ];
 
-            $scope.getPosts(0, 5);
+            // $scope.getPosts(0, 5);
 
             /////////////////////////////////////////////////////////////
 
